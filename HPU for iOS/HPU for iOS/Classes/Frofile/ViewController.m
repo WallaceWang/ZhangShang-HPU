@@ -388,9 +388,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
      _indexPath=indexPath;
     
-    if (indexPath.row > 0) {
     
-    [_pickview remove];
+    if (indexPath.row > 0) {
+        
+//    [_pickview remove];
     ProfileCell *cell=(ProfileCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     if ([cell.titleLabel.text isEqualToString:@"生日"]) {
         NSDate *date=[NSDate dateWithTimeIntervalSinceNow:9000000];
@@ -404,6 +405,8 @@
     }
     _pickview.delegate=self;
     
+    [self.view.window addSubview:self.cover];
+        
     [_pickview show];
 
     }else{
@@ -468,7 +471,11 @@
 -(void)toobarDonBtnHaveClick:(PickView *)pickView resultString:(NSString *)resultString{
         ProfileCell * cell=(ProfileCell *)[self.tableView cellForRowAtIndexPath:_indexPath];
     cell.descLabel.text=resultString;
-//    [self.cover removeFromSuperview];
+    [self.cover removeFromSuperview];
+}
+-(void)removeCover
+{
+    [self.cover removeFromSuperview];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

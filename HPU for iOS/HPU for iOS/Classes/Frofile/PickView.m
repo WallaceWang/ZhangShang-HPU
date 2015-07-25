@@ -293,6 +293,10 @@
 }
 
 -(void)remove{
+    
+    if ([self.delegate respondsToSelector:@selector(removeCover)]) {
+        [self.delegate removeCover];
+    }
    
     [self removeFromSuperview];
 }

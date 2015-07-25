@@ -13,6 +13,7 @@
 
 @optional
 -(void)toobarDonBtnHaveClick:(PickView *)pickView resultString:(NSString *)resultString;
+-(void)removeCover;
 
 @end
 
